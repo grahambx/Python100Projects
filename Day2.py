@@ -1,5 +1,6 @@
 # Udemy 100 Projects in 100 days
-# Day 1 Project
+# Day 2 Project
+# RESTAURANT BILL SPLITTER
 # Type Conversion -- F String
 print("Welcome to the tip calculator!")
 cost = float(input("What was the total bill? "))
