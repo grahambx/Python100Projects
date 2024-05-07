@@ -1,7 +1,11 @@
 # Udemy 100 Projects in 100 days
 # Day 3 Project
 # TEXT ADVENTURE GAME
-# if elif else
+# Skills: If Elif Else, str.lower()
+# Notes:
+
+# Simple text adventure game with 3 decision/inflection points
+# ASCI art from ascii.co.uk/art
 
 print('''
 *******************************************************************************
@@ -25,16 +29,19 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 /______/______/______/______/______/______/______/______/______/______/______/_
 *******************************************************************************
 ''')
+# Get User Decision 1
 direction = input("Welcome to Treasure Island.   You come to a fork in the road, do you go right or left? ")
 direction = direction.lower()
 if direction == "right":
     print("You fell into a trap pit, GAME OVER")
 else:
+    # Get User Decision 2
     swimwait = input('A bear starts chasing you, you run out of road and come to a river, do you "Swim" or "Wait"?')
     swimwait = swimwait.lower()
     if swimwait == "swim":
         print("You get eaten by a fish. GAME OVER")
     else:
+        # Get User Decision 3
         side = input('He\'s a friendly bear, awwww!! He flips a coin, do you choose "Heads", "Tails" or anything else?')
         side = side.lower()
         if side == "heads":
