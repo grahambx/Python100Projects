@@ -2,7 +2,7 @@
 # Day 11 Project
 # BLACKJACK GAME
 # Skills: Modules, Functions, Lists, While, For, Complex
-# Notes: This was developed with no hints, approach is quite different to course final code. However my approach feels cleaner with less redundancy
+# Notes: My Approach is quite different to course final code. However, my approach feels cleaner with less redundancy
 
 import random
 from os import system, name
