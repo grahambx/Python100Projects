@@ -7,7 +7,7 @@
 # don't nest functions like I did with make unique.
 
 import random
-from Day13_Data import data
+from Day14_Data import data
 
 
 # Get 2 initial choices from data, make sure they are different with make_unique()
