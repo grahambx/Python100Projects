@@ -1,94 +1,96 @@
+import random
 
-from random import randint
-from os import system, name
+from replit import clear
+
+from art import logo, vs
+from game_data import data
 
 
-def clear():
-    if name == 'nt':
-        _ = system('cls')
+def get_random_account():
+    """Get data from random account"""
+    return random.choice(data)
+
+
+def format_data(account):
+    """Format account into printable format: name, description and country"""
+    name = account["name"]
+    description = account["description"]
+    country = account["country"]
+    # print(f'{name}: {account["follower_count"]}')
+    return f"{name}, a {description}, from {country}"
+
+
+def check_answer(guess, a_followers, b_followers):
+    """Checks followers against user's guess
+  and returns True if they got it right.
+  Or False if they got it wrong."""
+    if a_followers > b_followers:
+        return guess == "a"
     else:
-        _ = system('clear')
+        return guess == "b"
 
 
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-
-
-def add_card(player):
-    """Returns a random card from deck"""
-    player.append(cards[randint(0, 12)])
-
-
-def update_scores(player):
+def game():
+    print(logo)
     score = 0
-    for card in player:
-        score += card
-    return score
-    # could just have used return sum(player), nothing else
+    game_should_continue = True
+    account_a = get_random_account()
+    account_b = get_random_account()
 
+    while game_should_continue:
+        account_a = account_b
+        account_b = get_random_account()
 
-def check_ace(player):
-    for i in range(len(player)):
-        if player[i] == 11:
-            player[i] = 1
+        while account_a == account_b:
+            account_b = get_random_account()
 
+        print(f"Compare A: {format_data(account_a)}.")
+        print(vs)
+        print(f"Against B: {format_data(account_b)}.")
 
-def print_final_hand(user, cpu):
-    print(f"Your Final Hand:       {user}, final score: {update_scores(user)}")
-    print(f"Computer's Final hand: {cpu}, final score: {update_scores(cpu)}")
+        guess = input("Who has more followers? Type 'A' or 'B': ").lower()
+        a_follower_count = account_a["follower_count"]
+        b_follower_count = account_b["follower_count"]
+        is_correct = check_answer(guess, a_follower_count, b_follower_count)
 
-
-def outcome(user_score, cpu_score):
-    if user_score > 21:
-        return "You went over. You Lose"
-    elif cpu_score > 21:
-        return "Computer went over. You Win"
-    elif user_score > cpu_score:
-        return "You Win"
-    elif user_score == cpu_score:
-        return "Draw"
-    else:
-        return "You Lose"
-
-
-def blackjack():
-    user = []
-    cpu = []
-    if input("Do you want to play a game of Blackjack? Type 'y' or 'n':") == 'y':
         clear()
-        for x in range(2):
-            add_card(user)
-            add_card(cpu)
-        user_score = update_scores(user)
-        cpu_score = update_scores(cpu)
-        if cpu_score == 21:
-            print_final_hand(user, cpu)
-            print("Dealer Wins: BlackJack")
-        elif user_score == 21:
-            print_final_hand(user, cpu)
-            print("You Win: BlackJack")
+        print(logo)
+        if is_correct:
+            score += 1
+            print(f"You're right! Current score: {score}.")
         else:
-            should_continue = True
-            while user_score < 21 and should_continue:
-                print(f"Your cards: {user}, current score: {user_score}")
-                print(f"Computer's first card: {cpu[0]}")
-                if input("Type 'y' to get another card, type 'n' to pass: ") == 'y':
-                    add_card(user)
-                    user_score = update_scores(user)
-                    if user_score > 21:
-                        check_ace(user)
-                        user_score = update_scores(user)
-                else:
-                    should_continue = False
-            if user_score <= 21:
-                while cpu_score < 17:
-                    add_card(cpu)
-                    cpu_score = update_scores(cpu)
-                    if cpu_score > 21:
-                        check_ace(cpu)
-                        cpu_score = update_scores(cpu)
-            print_final_hand(user, cpu)
-            print(outcome(user_score, cpu_score))
-        blackjack()
+            game_should_continue = False
+            print(f"Sorry, that's wrong. Final score: {score}")
 
 
-blackjack()
+game()
+
+'''
+
+FAQ: Why does choice B always become choice A in every round, even when A had more followers? 
+
+Suppose you just started the game and you are comparing the followers of A - Instagram (364k) to B - Selena Gomez (174k). Instagram has more followers, so choice A is correct. However, the subsequent comparison should be between Selena Gomez (the new A) and someone else. The reason is that everything in our list has fewer followers than Instagram. If we were to keep Instagram as part of the comparison (as choice A) then Instagram would stay there for the rest of the game. This would be quite boring. By swapping choice B for A each round, we avoid a situation where the number of followers of choice A keeps going up over the course of the game. Hope that makes sense :-)
+
+'''
+
+# Generate a random account from the game data.
+
+# Format account data into printable format.
+
+# Ask user for a guess.
+
+# Check if user is correct.
+## Get follower count.
+## If Statement
+
+# Feedback.
+
+# Score Keeping.
+
+# Make game repeatable.
+
+# Make B become the next A.
+
+# Add art.
+
+# Clear screen between rounds.
