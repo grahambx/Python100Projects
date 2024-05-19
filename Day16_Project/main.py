@@ -1,3 +1,11 @@
+# Udemy 100 Projects in 100 days
+# Day 16 Project
+# COFFEE MACHINE - OOP VERSION
+# Skills: OOP, Modules, Libraries, Classes, Objects
+# Notes: Pasted into both Copilot and Gemini for critique: well-structured, functional etc.
+# My blind output now very similar in approach to course
+
+
 from menu import Menu, MenuItem
 from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
