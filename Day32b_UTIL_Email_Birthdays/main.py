@@ -8,8 +8,8 @@ import pandas
 import random
 import smtplib
 
-MY_EMAIL = "learninggraham@gmail.com"
-MY_PASSWORD = "nddj xojw bjti xawc"
+MY_EMAIL = "Redacted and Revoked at Source"
+MY_PASSWORD = "Redacted and Revoked at Source"
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 letters = ["letter_1.txt", "letter_2.txt", "letter_3.txt"]

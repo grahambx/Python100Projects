@@ -9,9 +9,9 @@ import smtplib
 import datetime as dt
 import random
 
-MY_EMAIL = "learninggraham@gmail.com"
-MY_PASSWORD = "nddj xojw bjti xawc"
-target_email = "deep_3z@yahoo.co.uk"
+MY_EMAIL = "Redacted and Revoked at Source"
+MY_PASSWORD = "Redacted and Revoked at Source"
+target_email = "Redacted and Revoked at Source"
 
 now = dt.datetime.now()
 day_of_week = now.weekday()  # 3 = today = Thursday
