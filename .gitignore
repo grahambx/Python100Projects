@@ -9,3 +9,9 @@ __pycache__/
 
 # Ignore dependencies installed via pip (virtual environment)
 *.egg-info/
+
+# Ignore .env file
+.env
+
+# Ignore idea settings
+.idea/
